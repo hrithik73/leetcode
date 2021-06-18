@@ -1,15 +1,21 @@
 class Solution {
 public:
     vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
-        vector <int> newVect;
-        for(int i=0;i<nums.size();i++){
-            int count=0;
-            for(int j=0;j<nums.size();j++){
-                if(nums[j]<nums[i])
-                    count++;
-            }
-            newVect.push_back(count);
+        vector<int> num=nums;
+        sort(num.begin(),num.end());      
+      
+        unordered_map<int,int> map;
+        for(int i=0;i<=(num.size()-1);i++){
+            if(map.find(num[i])==map.end())
+            map[num[i]]=i;
         }
-        return newVect;
+        for(int i=0;i<nums.size();i++){
+            nums[i]=map[nums[i]];
+        }
+        
+        // for(auto i=map.begin();i!=map.end();i++)
+        // cout<<i->first;
+        
+        return nums;
     }
 };
