@@ -19,8 +19,10 @@ public:
                    if(temp[word[j]]){
                        temp[word[j]]--;
                    }
-                else
+                else{
                     flag=true;
+                    break;
+                }
              }
             if(!flag)
                 count+=word.size();
